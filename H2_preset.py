@@ -156,7 +156,7 @@ def ask(scenario_k,tier=True):
         with col1: 
             st.session_state.scenario[0][0]=st.selectbox("Functional Unit", FU_selected, index=FU_selected.index(st.session_state.scenario[0][0]), key='FU',help="The reference basis of comparison of an LCA")
         with col2:
-            st.session_state.scenario[0][19] = st.selectbox("LCIA Method", LCIA_selected, index=LCIA_selected.index(st.session_state.scenario[0][19]), key='LCIA',help="Impact assessment method")    
+            st.session_state.scenario[0][19] = st.selectbox("LCIA Method", LCIA_selected, index=LCIA_selected.index(st.session_state.scenario[0][19]), key='LCIA',help="Impact assessment method. Please contact us to access more LCIA method (ecoinvent license required).")    
 	
     if st.session_state.scenario[0][0] == '-- Select --' or st.session_state.scenario[0][19] == '-- Select --' :
         return None
