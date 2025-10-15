@@ -1,0 +1,12 @@
+Unit Impacts;None;pipeline (250km);pipeline (2500km);None;pipeline (250km);pipeline (2500km);None;pipeline (250km);pipeline (2500km);-- Select --
+Baseline;Present;Present;Present;State-of-the-Art;State-of-the-Art;State-of-the-Art;Target 2050;Target 2050;Target 2050;
+pressure;1;100;100;1;100;100;1;100;100;
+H2_leakage;0;0.0082;0.0082;0;0.0058;0.0058;0;0.0015;0.0015;
+electricity consumed;0;1.8;18;0;1.8;18;0;1.8;18;
+CO2;0;0.02;0.2;0;0.02;0.2;0;0.02;0.2;
+EQ;0;0;0;0;0;0;0;0;0;
+NRJ;0;0;0;0;0;0;0;0;0;
+HH;0;0;0;0;0;0;0;0;0;
+Water;0;0;0;0;0;0;0;0;0;
+TEQ;0;0;0;0;0;0;0;0;0;
+THH;0;0;0;0;0;0;0;0;0;

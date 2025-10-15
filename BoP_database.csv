@@ -1,0 +1,10 @@
+Unit Impacts;Compressor [kW];HEX [m2];ELH [kW];Rectifier [kW];Separator [m3];Pump [kW];Piping [kg];Instrumentation [kW];Vessel [m3];PSA [kW];Chiller [kW];Container [m3];Tank [kWstack]
+Energy Consumption [kW];1;0;1;0.05;0;1;0;1;0;1;1;0;0.00E+00
+sizing;0.42;8.50E-01;0.7;0.89;0.91;0.71;0.81;0.62;0.91;0.7;0.7;0.66;5.10E-01
+CO2;250;4.70E+01;3.2;12.1;1300;107;3.20E+00;50;1300;250;260;4.00E+03;5.30E+02
+EQ;0;0;0;0;0;0;0;0;0;0;0;0;0
+NRJ;0;0;0;0;0;0;0;0;0;0;0;0;0
+HH;0;0;0;0;0;0;0;0;0;0;0;0;0
+Water;0;0;0;0;0;0;0;0;0;0;0;0;0
+TEQ;0;0;0;0;0;0;0;0;0;0;0;0;0
+THH;0;0;0;0;0;0;0;0;0;0;0;0;0

@@ -1,0 +1,62 @@
+﻿Name;-- Select --;Presshyous
+Active_Surface [m2];;0.02
+cell_per_stack [unit];;100
+Degradation_rate [%];;1
+Degradation Max;;10
+Recycling Rate Metal [-];;0.9
+thickness_hydrogen [um];;397
+ratioS_hydrogen;;1.2
+material_hydrogen;;NiO-YSZ
+add_he;;[]
+thickness_oxygen [um];;12
+ratioS_oxygen;;1
+material_oxygen;;LSM
+add_oe;;[]
+thickness_barrier [um];;5
+ratioS_barrier;;1
+material_barrier;;LSM
+add_bp;;[]
+thickness_contact [um];;100
+ratioS_contact;;1
+material_contact;;GDC
+add_contact;;[]
+thickness_electrolyte [um];;5
+ratioS_electrolyte;;1
+material_electrolyte;;YSZ8
+add_electrolyte;;[]
+thickness_bipolar [um];;1000
+ratioS_bipolar;;1.2
+material_bipolar;;Stainless Steel
+add_bp;;[]
+Frame and Screw [kg/m2];;13.3
+Frame_mat;;Stainless Steel
+Current Collector [kg/m2];;0.26
+Collector_mat;;Copper
+Sealant [kg/m2];;0.8
+Sealant_mat;;glass mat
+thickness_ep [um];;30000
+ratioS_ep;;3.25
+material_ep;;Stainless Steel
+endplate_coating;;[]
+lifetime_bop;;80000
+Compressor [kW];;0.7
+HEX [m2];;35
+Chiller [kW];;1.05
+Rectifier [kWstack];;35
+Separator [m3];;0.16
+Pump [kW];;1
+Piping [unit];;110
+Instrumentation [kW];;1
+tank [unit];;0
+container [m3];;1.155
+U [V];;1.3
+J_dens [A/m2];;10000
+fuel utilization;;1
+heat demand;;9
+water demand;;14
+KOH;;0
+heat produced;;0
+H2 Leakage [-];;0.0025
+Pressure_out [bar];;1
+Temp_out [K];;1000
+purity_out [%];;99.9

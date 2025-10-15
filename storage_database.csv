@@ -1,0 +1,12 @@
+﻿Unit Impacts;None;Refuelling Station (FCEV);geological storage (Season);Buffer tank (Daily);Buffer tank (Weekly);None;Refuelling Station (FCEV);geological storage (Season);Buffer tank (Daily);Buffer tank (Weekly);None;Refuelling Station (FCEV);geological storage (Season);Buffer tank (Daily);Buffer tank (Weekly);-- Select --
+Baseline;Present;Present;Present;Present;Present;State-of-the-Art;State-of-the-Art;State-of-the-Art;State-of-the-Art;State-of-the-Art;Target 2050;Target 2050;Target 2050;Target 2050;Target 2050;
+pressure;1;700;100;50;100;1;700;100;50;100;1;700;100;50;100;
+H2 Leakage;0;0.01945;0.0153333;0.0032;0.0214;0;0.01285;0.0068;0.0022;0.0111;0;0.0025;0.00274;0.0007;0.0036;
+Electricity consumed;0;0;0.43;0;0;0;0;0.43;0;0;0;0;0.43;0;0;
+CO2;0;0.0373;0.19;0.0373;0.131;0;0.0373;0.19;0.0373;0.131;0;0.0373;0.19;0.0373;0.131;
+EQ;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+NRJ;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+HH;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+Water;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+TEQ;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+THH;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;

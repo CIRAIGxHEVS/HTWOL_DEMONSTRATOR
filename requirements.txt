@@ -1,0 +1,7 @@
+streamlit
+numpy
+matplotlib
+pandas
+pillow 
+astor==0.8.1
+plotly
