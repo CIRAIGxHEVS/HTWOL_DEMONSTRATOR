@@ -55,7 +55,7 @@ legend = [
     "Instrumentation [kW/(kgH2/h)]",
     "tank [kg/(kgH2/h)]",
     "container [m3/(kgH2/h)]",
-    "Voltage [V]",
+    "BoL Voltage [V]",
     "Current Density [A/m2]",
     "Fuel Utilization [-]",
     "Heat Demand [kWh/kgH2]",

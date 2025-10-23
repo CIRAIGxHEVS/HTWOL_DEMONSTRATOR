@@ -58,20 +58,41 @@ elif st.session_state['comparison_choice'] == "Comparison with an alternative te
         labels=[st.session_state.scenario[0][20]]
                     
         st.markdown("<p style='font-size:18px'><u><b>Alternative Technology</b> </u></p>", unsafe_allow_html=True)
-        techno_dict,techno_selected=pst.techno_available(st.session_state.name_file_techno)
-        techno='-- Select --'
-                
-        techno = st.selectbox('Technology Compared', techno_selected, index=techno_selected.index(techno), key='techno_scenario',help="Select a functionnally equivalent technology to compare with the reference FC&EL system")
-         
-        
-        if techno == '-- Select --' :
-            st.warning("You must select an option to continue.")  
+        techno_dict, techno_selected = pst.techno_available(st.session_state.name_file_techno)
+
+        PLACEHOLDER = "-- Select --"
+        # Ensure placeholder is present (and first)
+        options = [PLACEHOLDER] + [t for t in techno_selected if t != PLACEHOLDER]
+
+        # Default = only placeholder selected
+        selected_list = st.multiselect(
+            'Technologies Compared',
+            options=options,
+            default=[PLACEHOLDER],
+            key='techno_scenario',
+            help="Select one or more functionally equivalent technologies to compare with the reference FC&EL system."
+        )
+
+        # Drop placeholder from the working list; deduplicate while preserving order
+        chosen = [t for t in selected_list if t != PLACEHOLDER]
+        chosen = list(dict.fromkeys(chosen))
+
+        if not chosen:
+            st.warning("You must select at least one option to continue.")
         else:
-            t=mh.impact_techno(techno_dict,techno)
-            result_techno=np.array([t])
-            labels+=[techno]
-                
-            fig = plt.figure()
-            hplt.plotting_technosphere(result,result_techno,st.session_state.scenario[0][19],labels)
-                
+            # Compute impacts for each selected technology
+            tech_impacts = [mh.impact_techno(techno_dict, t) for t in chosen]
+            result_techno = np.array(tech_impacts)   # shape: (n_selected, ...)
+
+            # Extend labels with the chosen technology names
+            labels_extended = labels + chosen
+
+            # Plot
+            fig = hplt.plotting_technosphere(
+                result,                 # baseline
+                result_techno,          # compared technologies
+                st.session_state.scenario[0][19],  # LCIA selection
+                labels_extended
+            )
+            
 

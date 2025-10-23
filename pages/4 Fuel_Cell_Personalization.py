@@ -8,7 +8,7 @@ import H2_preset as pst
 import H2_export as ext
 
 model_selected=['-- Select --', 'Baseline','Personalized']
-TRL_selected=['-- Select --','Present','State-of-the-Art','Target 2050']
+TRL_selected=['-- Select --','Operational (TRL>7)','State-of-the-Art (TRL<7)','Target 2050']
 
 def restart():
     st.session_state['FuelCell_Perso'] = None

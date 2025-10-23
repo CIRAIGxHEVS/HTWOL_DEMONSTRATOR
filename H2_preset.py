@@ -14,7 +14,8 @@ from collections import defaultdict
 
 FU_selected=vrs.FU_selected()
 LCIA_selected=vrs.LCIA_selected()
-TRL_selected=['-- Select --','Present','State-of-the-Art','Target 2050']
+TRL_selected=['-- Select --','Operational (TRL>7)','State-of-the-Art (TRL<7)','Target 2050']
+TRL_storage_selected=['Operational (TRL>7)','State-of-the-Art (TRL<7)','Target 2050']
 exergy_selected=[False,True]
 model_selected=['Baseline','Personalized']
 purity_selected=['Grade A (98%)','Grade D (99.97%)','UltraPure (99.999%)']
@@ -136,7 +137,7 @@ def ask(scenario_k,tier=True):
         col1,col2=st.columns(2)
         with col1:
             if st.button("Create New Scenario", key=f"button_scena_{scenario_k}"):
-                st.session_state.scenario[scenario_k] = ['-- Select --',[False,False,False,False,False],1.0,'Grade A (98%)','Baseline','-- Select --','-- Select --',1.0,'-- Select --',['-- Select --','-- Select --'],[False,'None','-- Select --'],'Baseline','-- Select --','-- Select --',30,'-- Select --','-- Select --',False,'-- Select --','-- Select --',f"Scenario {scenario_k}"]
+                st.session_state.scenario[scenario_k] = ['-- Select --',[False,False,False,False,False],1.0,'Grade A (98%)','Baseline','-- Select --','-- Select --',1.0,'-- Select --',['-- Select --','Operational (TRL>7)'],[False,'None','Operational (TRL>7)'],'Baseline','-- Select --','-- Select --',30,'-- Select --','-- Select --',False,'-- Select --','-- Select --',f"Scenario {scenario_k}"]
                 
         with col2:
             with st.expander("Import: Upload Scenario "):
@@ -156,7 +157,7 @@ def ask(scenario_k,tier=True):
         with col1: 
             st.session_state.scenario[0][0]=st.selectbox("Functional Unit", FU_selected, index=FU_selected.index(st.session_state.scenario[0][0]), key='FU',help="The reference basis of comparison of an LCA")
         with col2:
-            st.session_state.scenario[0][19] = st.selectbox("LCIA Method", LCIA_selected, index=LCIA_selected.index(st.session_state.scenario[0][19]), key='LCIA',help="Impact assessment method. Please contact us to access more LCIA method (ecoinvent license required).")    
+            st.session_state.scenario[0][19] = st.selectbox("LCIA Method", LCIA_selected, index=LCIA_selected.index(st.session_state.scenario[0][19]), key='LCIA',help="Impact assessment method")    
 	
     if st.session_state.scenario[0][0] == '-- Select --' or st.session_state.scenario[0][19] == '-- Select --' :
         return None
@@ -243,6 +244,9 @@ def ask(scenario_k,tier=True):
                 st.session_state.scenario[scenario_k][2]=st.number_input("Pressure Required [bar]", value=st.session_state.scenario[scenario_k][2], key=f"pressure_{scenario_k}",help="Hydrogen pressure required by the final application")
             with col2:
                 st.session_state.scenario[scenario_k][3]=st.selectbox("Purity Required [%]", purity_selected,index=purity_selected.index(st.session_state.scenario[scenario_k][3]), key=f"purity_{scenario_k}",help="Hydrogen purity required by the final application")
+        else:
+            st.session_state.scenario[scenario_k][2]=1
+            st.session_state.scenario[scenario_k][3]='Grade A (98%)'
 
         
         st.markdown("<p style='font-size:18px'><u><b>Electrolyser Characteristics</b> </u></p>", unsafe_allow_html=True)
@@ -281,7 +285,7 @@ def ask(scenario_k,tier=True):
                     
         if (st.session_state.scenario[scenario_k][9][0]!='-- Select --' and st.session_state.scenario[scenario_k][9][0]!='None') or (st.session_state.scenario[scenario_k][10][1]!='-- Select --' and st.session_state.scenario[scenario_k][10][1]!='None'):
             with col4:
-                st.session_state.scenario[scenario_k][9][1]=st.selectbox('Storage&Distrib. \n Maturity', TRL_selected, index=TRL_selected.index(st.session_state.scenario[scenario_k][9][1]), key=f"mat_SD_{scenario_k}",help="Select the technology level of maturity")
+                st.session_state.scenario[scenario_k][9][1]=st.selectbox('Storage&Distrib. \n Maturity', TRL_storage_selected, index=TRL_storage_selected.index(st.session_state.scenario[scenario_k][9][1]), key=f"mat_SD_{scenario_k}",help="Select the technology level of maturity")
                 st.session_state.scenario[scenario_k][10][2]=st.session_state.scenario[scenario_k][9][1]
                 if st.session_state.scenario[scenario_k][9][1] == '-- Select --':
                     return None
@@ -437,7 +441,7 @@ def ask_detailed_stack(stack,FC):
         
         col1, col2= st.columns(2)
         with col1:
-            param_cell[0] = st.number_input("Active Surface [m]", value=param_cell[0])
+            param_cell[0] = st.number_input("Active Surface [m2]", value=param_cell[0])
         with col2:
             param_stack[0] = st.number_input("Cell per Stack", value=param_stack[0])
         
@@ -509,7 +513,7 @@ def ask_detailed_stack(stack,FC):
                 col1, col2 = st.columns(2)
                 
                 with col1:
-                    param_frame[2*k] = float(st.text_input(f"Quantity [kg/m2]", value=str(param_frame[2*k]), key=f"epaisseur_{8+k}"))
+                    param_frame[2*k] = float(st.text_input(f"Quantity [kg/m2 of active area]", value=str(param_frame[2*k]), key=f"epaisseur_{8+k}"))
                 with col2:
                     param_frame[2*k+1] = st.selectbox(f"Material", mat_selected, index=mat_selected.index(param_frame[2*k+1]), key=f"materiau_{8+k}")                 
 
@@ -538,9 +542,9 @@ def ask_detailed_stack(stack,FC):
         else:
             col1, col2,col3,col4,col5,col6 = st.columns(6)
         with col1:
-            param_cons[0] = st.number_input("Voltage [V]", value=param_cons[0])
+            param_cons[0] = st.number_input("BoL Voltage [V]", value=param_cons[0])
         with col2:
-            param_cons[1] = st.number_input("Current Density [A/cm2]", value=param_cons[1])         
+            param_cons[1] = st.number_input("Current Density [A/m2]", value=param_cons[1])         
         with col3:
             param_cons[4] = st.number_input("Water demand [L/kgH2]", value=param_cons[4])             
         with col4:
@@ -568,7 +572,7 @@ def ask_detailed_energy(mix,electricity):
         mix[3] = st.number_input("Hydro", value=mix[3])
         mix[4] = st.number_input("Nuclear", value=mix[4])
         if np.sum(np.array(mix))!=1:
-            st.warning("Electricity Mix should be 100%")
+            st.warning("The sum should be equal to 1.")
         return mix                
     
     else:           
@@ -576,7 +580,7 @@ def ask_detailed_energy(mix,electricity):
         mix[1] = st.number_input("Electricity (heaters)", value=mix[1])
         mix[2]= st.number_input("Available on site", value=mix[2])
         if np.sum(np.array(mix))!=1:
-            st.warning("Heat Mix should be 100%")
+            st.warning("The sum should be equal to 1.")
         return mix             
 
 

@@ -133,14 +133,16 @@ def result_by_tier(results, tier):
                 for s in supply:
                     result.append(np.sum(s, axis=0))
                 legend = legend_detailed
-                color=['pink','deeppink','violet','grey','brown','khaki','purple','white']
+                color=['pink','deeppink','violet','grey','brown','khaki','purple','salmon']
                 hash=[False,False,False,False,False,False,False,True]
+            
             else:
                 result=np.concatenate(supply)
                 legend=[]
-                for i in range (len(legend_simplified)):
-                    for k in range (len(legend_detailed)):
+                for i in range (len(legend_detailed)):
+                    for k in range (len(legend_simplified)):
                         legend.append(legend_simplified[k]+' ('+legend_detailed[i]+' )')
+        
 
                 pinks    = [to_hex(c, keep_alpha=False) for c in plt.cm.Reds(np.linspace(0.7, 1, 7))]
                 reds = [to_hex(c, keep_alpha=False) for c in plt.cm.Oranges(np.linspace(0.10, 0.6, 7))]
@@ -152,7 +154,7 @@ def result_by_tier(results, tier):
                 oranges = [to_hex(c, keep_alpha=False) for c in plt.cm.Oranges(np.linspace(0.1, 0.4, 7))]
 
                 color = pinks + reds+ violet + greys  + browns + greens + purple + oranges
-                hash=[False]*42+[True]*7
+                hash=[False]*49+[True]*7
 
         else:
 
@@ -165,7 +167,7 @@ def result_by_tier(results, tier):
                 else:
                     legend.append(legend_detailed[n//2]+' (Surplus H2 Losses)')
 
-            color=['pink','pink','deeppink','deeppink','violet','violet','grey','grey','brown','brown','khaki','khaki','purple','purple','white','white']
+            color=['pink','pink','deeppink','deeppink','violet','violet','grey','grey','brown','brown','khaki','khaki','purple','purple','salmon','salmon']
             hash=[False,True]*8
     return result, legend, color, hash
 
@@ -176,13 +178,13 @@ def plotting(result, tier, LCIA):
     array = np.vstack([np.atleast_2d(x) for x in array])
 
     if LCIA == 'Climate Change':
-        legend_LCIA = ['CC \n[kgCO2eq]']; array = array[:, 0:1]
+        legend_LCIA = ['CC <br>[kgCO2eq]']; array = array[:, 0:1]
     elif LCIA == 'IW+ Footprint':
-        legend_LCIA = ['CC \n[kgCO2eq]','Rem. EQ \n[PDF.m2.yr]',
-                       'Energy \n[MJ deprived]','Rem. HH \n[DALY]','Water \n[m3 worldEq]']
+        legend_LCIA = ['CC <br>[kgCO2eq]','Rem. EQ <br>[PDF.m2.yr]',
+                       'Fossil and Nuc. Energy <br>n[MJ deprived]','Rem. HH <br>[DALY]','Water <br>[m3 worldEq]']
         array = array[:, 0:5]
     else:
-        legend_LCIA = ['EQ \n[PDF.m2.yr]','HH \n[DALY]']; array = array[:, 5:7]
+        legend_LCIA = ['EQ <br>[PDF.m2.yr]','HH <br>[DALY]']; array = array[:, 5:7]
 
     col_sums = np.sum(array, axis=0)
     data_norm = (array / col_sums) * 100
@@ -239,6 +241,7 @@ def plotting(result, tier, LCIA):
     st.plotly_chart(fig, use_container_width=True)
     
     # Table
+    
     fmt = lambda x: f"{x:.3g}" if isinstance(x,(int,float,np.floating)) else x
     df = pd.DataFrame(array, index=labels, columns=legend_LCIA)
     df = df[(df.abs() > 1e-10).any(axis=1)]
@@ -256,16 +259,16 @@ def plotting_comp(result1, result2, tier, LCIA):
 
     # === LCIA ===
     if LCIA == 'Climate Change':
-        legend_LCIA = ['CC \n[kgCO2eq]']
+        legend_LCIA = ['CC <br>[kgCO2eq]']
         array1 = array1[:, 0:1]; array2 = array2[:, 0:1]
     elif LCIA == 'IW+ Footprint':
         legend_LCIA = [
-            'CC \n[kgCO2eq]', 'Rem. EQ \n[PDF.m2.yr]',
-            'Energy \n[MJ deprived]', 'Rem. HH \n[DALY]', 'Water \n[m3 worldEq]'
+            'CC <br>[kgCO2eq]', 'Rem. EQ <br>[PDF.m2.yr]',
+            'Fossil and Nuc. Energy <br>[MJ deprived]', 'Rem. HH <br>[DALY]', 'Water <br>[m3 worldEq]'
         ]
         array1 = array1[:, 0:5]; array2 = array2[:, 0:5]
     else:
-        legend_LCIA = ['EQ \n[PDF.m2.yr]', 'HH \n[DALY]']
+        legend_LCIA = ['EQ <br>[PDF.m2.yr]', 'HH <br>[DALY]']
         array1 = array1[:, 5:7]; array2 = array2[:, 5:7]
 
     # === Normalisation (par rapport au scénario 1) ===
@@ -361,7 +364,36 @@ def plotting_comp(result1, result2, tier, LCIA):
             text=f"{col_sums2[j]:.3g}",
             showarrow=False, font=dict(size=11, color="black")
         )
+        
+        fig.add_annotation(
+            x=x1[j], y=-6,
+            text="SO",
+            showarrow=False, font=dict(size=11, color="black")
+        )
 
+        fig.add_annotation(
+            x=x2[j], y=-6,
+            text="PEM",
+            showarrow=False, font=dict(size=11, color="black")
+        )
+
+    """fig.add_trace(go.Scatter(
+        x=[None], y=[None],
+        mode="markers",
+        marker=dict(color='rgba(255,255,255,0)', size=1),
+        showlegend=True,
+        name=f"S1 = {str(st.session_state.scenario[0][20])}",
+        hoverinfo="skip"
+    ))
+    fig.add_trace(go.Scatter(
+        x=[None], y=[None],
+        mode="markers",
+        marker=dict(color='rgba(255,255,255,0)', size=1),
+        showlegend=True,
+        name=f"S2 = {str(st.session_state.scenario[1][20])}",
+        hoverinfo="skip"
+    ))"""
+    
     # === Layout ===
     ymax = max(h1.max() if h1.size else 0, h2.max() if h2.size else 0)
     fig.update_layout(
@@ -375,7 +407,7 @@ def plotting_comp(result1, result2, tier, LCIA):
         ),
         yaxis=dict(
             title="Impact Score [%]",
-            range=[0, max(110, float(ymax) * 1.25)]
+            range=[-10, max(110, float(ymax) * 1.25)]
         ),
         bargap=0.25,
         bargroupgap=0.05,
@@ -389,6 +421,7 @@ def plotting_comp(result1, result2, tier, LCIA):
     st.plotly_chart(fig, use_container_width=True)
 
     # === Tables comparatives ===
+    legend_LCIA = [s.replace("<br>","\n") for s in legend_LCIA]
     fmt = lambda x: f"{x:.3g}" if isinstance(x, (int, float, np.floating)) else x
     df1 = pd.DataFrame(array1, index=labels, columns=legend_LCIA)
     df2 = pd.DataFrame(array2, index=labels, columns=legend_LCIA)
@@ -403,29 +436,26 @@ def plotting_comp(result1, result2, tier, LCIA):
         st.markdown(f"**{st.session_state.scenario[1][20]}**")
         st.table(df2)
 
-    
-
-
 
 
 
 def plotting_technosphere(baseline, technosphere, LCIA, labels):
-    purple_colors = plt.cm.Purples(np.linspace(0.5,1,len(baseline)))
-    yellow_colors = plt.cm.YlOrBr(np.linspace(0.5,1,len(technosphere)))
-    color_list = _ensure_hex(np.concatenate([purple_colors,yellow_colors]))
+    #purple_colors = plt.cm.Purples(np.linspace(0.5,1,len(baseline)))
+    #yellow_colors = plt.cm.YlOrBr(np.linspace(0.5,1,len(technosphere)))
+    color_list = ('mediumpurple','chocolate','yellowgreen','black','steelblue','crimson','silver')
 
     if LCIA == 'Climate Change':
-        legend_LCIA=['CC \n[kgCO2eq]']
+        legend_LCIA=['CC <br>[kgCO2eq]']
         baseline=[a[0:1] for a in baseline]; technosphere=[a[0:1] for a in technosphere]
     elif LCIA == 'IW+ Footprint':
-        legend_LCIA=['CC \n[kgCO2eq]','Rem. EQ \n[PDF.m2.yr]','Energy \n[MJ deprived]','Rem. HH \n[DALY]','Water \n[m3 worldEq]']
+        legend_LCIA=['CC <br>[kgCO2eq]','Rem. EQ <br>[PDF.m2.yr]','Fossil and Nuc. Energy <br>[MJ deprived]','Rem. HH <br>[DALY]','Water <br>[m3 worldEq]']
         baseline=[a[0:5] for a in baseline]; technosphere=[a[0:5] for a in technosphere]
     else:
-        legend_LCIA=['EQ \n[PDF.m2.yr]','HH \n[DALY]']
+        legend_LCIA=['EQ <br>[PDF.m2.yr]','HH <br>[DALY]']
         baseline=[a[5:7] for a in baseline]; technosphere=[a[5:7] for a in technosphere]
 
     arr = np.vstack(baseline+technosphere)
-    ref_max = np.max(arr, axis=0)
+    ref_max = np.max(baseline, axis=0)
     arr_norm = (arr / ref_max) * 100
 
     fig = go.Figure()
@@ -455,6 +485,8 @@ def plotting_technosphere(baseline, technosphere, LCIA, labels):
     fig.update_layout( barmode="group", title=f"Comparison of potential impact of technologies providing {st.session_state.scenario[0][0]}", xaxis_title="Impact Categories", yaxis_title="Impact Score [%]" )
     
     st.plotly_chart(fig, use_container_width=True)
+
+    legend_LCIA = [s.replace("<br>","\n") for s in legend_LCIA]
     fmt = lambda x: f"{x:.3g}" if isinstance(x,(int,float,np.floating)) else x
     df = pd.DataFrame(arr, index=labels, columns=legend_LCIA)
     df = df[(df.abs()>1e-10).any(axis=1)]
@@ -471,7 +503,7 @@ def plotting_stack(result, LCIA, labels):
         legend_LCIA=['CC \n[kgCO2eq]']
         baseline=[a[0:1] for a in baseline]; technosphere=[a[0:1] for a in technosphere]
     elif LCIA == 'IW+ Footprint':
-        legend_LCIA=['CC \n[kgCO2eq]','Rem. EQ \n[PDF.m2.yr]','Energy \n[MJ deprived]','Rem. HH \n[DALY]','Water \n[m3 worldEq]']
+        legend_LCIA=['CC \n[kgCO2eq]','Rem. EQ \n[PDF.m2.yr]','Fossil and Nuc. Energy \n[MJ deprived]','Rem. HH \n[DALY]','Water \n[m3 worldEq]']
         baseline=[a[0:5] for a in baseline]; technosphere=[a[0:5] for a in technosphere]
     else:
         legend_LCIA=['EQ \n[PDF.m2.yr]','HH \n[DALY]']

@@ -378,8 +378,8 @@ def total_impact_EC_per_kgH2 (operating,param_cell,element_cell,param_stack,elem
 
     # Second level purification (Grade D to UltraPure)
         if purity_required >= 99.997 and purity_EL < 99.997:
-            leakage_rate_PP+=0.03  # Adjust for 97% recovery
-            power_PSA+=0.5
+            leakage_rate_PP+=0.04  # Adjust for 97% recovery
+            power_PSA+=3.5
         
         eq_PP.append('PSA [kW]')
         power_eq_PP.append(power_PSA)  # Energy in kWh/kg H2
@@ -420,10 +420,10 @@ def total_impact_EC_per_kgH2 (operating,param_cell,element_cell,param_stack,elem
     return results,detailed_results
     
 
-def sizing_parameters_FC (P_stack,voltage,J_dens,active_S_max,cell_per_stack):
+def sizing_parameters_FC (P_stack,voltage,J_dens,active_S_max,cell_per_stack,fuel_utilization):
 
     intensity=P_stack*1000/voltage
-    flow=intensity*(M_H2*3600)/Faraday/electron
+    flow=intensity*(M_H2*3600)/Faraday/electron/fuel_utilization
     surface_tot=intensity/J_dens
     N_cell_min=(surface_tot/active_S_max)
     N_stack=np.ceil(N_cell_min/cell_per_stack)
@@ -466,7 +466,7 @@ def total_impact_FC_per_kgH2 (operating,param_cell,element_cell,param_stack,elem
     #degradation modeling
     U=U*(1-d_max/100/2)
     
-    flow,active_S,N_cell,N_stack=sizing_parameters_FC(P_stack,U,J_dens,active_S_max,cell_per_stack) #changer avec Power
+    flow,active_S,N_cell,N_stack=sizing_parameters_FC(P_stack,U,J_dens,active_S_max,cell_per_stack,fuel_utilization) #changer avec Power
 
 
     #print(P_stack,N_stack,N_cell,flow)
@@ -493,8 +493,8 @@ def total_impact_FC_per_kgH2 (operating,param_cell,element_cell,param_stack,elem
 
 
     lifetime_stack=d_max/d_rate*1000
-    stack_per_kgH2=1/(lifetime_stack*flow)
-    BoP_per_kgH2=1/(lifetime_bop*flow)
+    stack_per_kgH2=LHV_hydrogen/(lifetime_stack*P_stack)
+    BoP_per_kgH2=LHV_hydrogen/(lifetime_bop*P_stack)
     
     
         
@@ -533,11 +533,13 @@ def total_impact_EUP_per_FU (enduse_process,kgH2_per_FU):
 def generation_results(input_EL,input_FC,enduse_process,kgH2_per_FU,boundaries):
     operating, param_cell, e_cell, param_stack, e_stack, param_bop, param_cons,param_h2, elec_mix,heat_mix=input_EL
     results_per_kgH2, detailed_results_per_kgH2 = total_impact_EC_per_kgH2(operating, param_cell, e_cell, param_stack, e_stack, param_bop, param_cons,param_h2, elec_mix,heat_mix)
+    
     if input_FC!=None:
         operating_FC, param_cell_FC, e_cell_FC, param_stack_FC, e_stack_FC, param_bop_FC, param_cons_FC=input_FC
         i_FC,i_detailed_FC = total_impact_FC_per_kgH2(operating_FC, param_cell_FC, e_cell_FC, param_stack_FC, e_stack_FC, param_bop_FC, param_cons_FC)
         results_per_kgH2[5]=i_FC
         detailed_results_per_kgH2[1]=i_detailed_FC
+
     
     if enduse_process!=None:
         i_EUP=total_impact_EUP_per_FU (enduse_process,kgH2_per_FU)
@@ -546,17 +548,24 @@ def generation_results(input_EL,input_FC,enduse_process,kgH2_per_FU,boundaries):
 
     ## Potential multifunctionality with heat co-produced ##
 
+    ## Quantity of Hydrogen consumed in Fuel Cell per FU
+    kgH2_consumed_FC_per_FU=1
+    if input_FC!=None:
+        eff_FC=(1-i_FC[-1][0])*(1-i_FC[-1][1])*(1-i_FC[-1][2])
+        kgH2_consumed_FC_per_FU=1/eff_FC
+    heat_recovered_per_FU=boundaries[4]*kgH2_consumed_FC_per_FU
+
     ## Case 1: Heat Not Recovered OR Heat Recovered treated as a Waste (Cut-Off)    
     ratio=1
 
     ## Case 2: Heat Recovered - Exergy Allocation
     if boundaries[1]:
-        Ex_heat=(1-298/boundaries[3])*boundaries[4]
+        Ex_heat=(1-298/boundaries[3])*(heat_recovered_per_FU)
         ratio=LHV_hydrogen/(LHV_hydrogen+Ex_heat)
         
     ## Case 3: Heat Recovered - Energy Allocation (Co-generation)
     if boundaries[2]:
-        ratio=LHV_hydrogen/(LHV_hydrogen+boundaries[4])
+        ratio=LHV_hydrogen/(LHV_hydrogen+heat_recovered_per_FU)
     
     kgH2_per_FU=kgH2_per_FU*ratio
 
