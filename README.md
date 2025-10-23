@@ -4,7 +4,7 @@ This repository contains the code and datasets to run the tool HTWOL Demonstrato
 Please read the user guide before first use: 
 Link to the HTWOL Demonstrator: https://htwol-co2.streamlit.app/
 
-Documentation for this tool is available here: 
+Documentation for this tool is available here: 10.5281/zenodo.17428317
 
 Authors: Gabriel Magnaval, Maël Mouhoub, Prof. Anne-Marie Boulay, Prof. Manuele Margni
 
