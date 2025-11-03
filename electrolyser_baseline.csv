@@ -1,5 +1,5 @@
 ﻿Family;SOEL;AEL;PEMEL;AEMEL;SOEL;AEL;PEMEL;AEMEL;SOEL;AEL;PEMEL;AEMEL;-- Select --
-TRL;Present;Present;Present;Present;State-of-the-Art;State-of-the-Art;State-of-the-Art;State-of-the-Art;Target 2050;Target 2050;Target 2050;Target 2050;
+TRL;Operational (TRL>7);Operational (TRL>7);Operational (TRL>7);Operational (TRL>7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);Target 2050;Target 2050;Target 2050;Target 2050;
 Active_Surface [m2];0.01;1;0.07;0.01;0.04;2;0.3;0.03;0.1;4.2;0.9;0.09;
 cell_per_stack [unit];433;166;263;208;433;166;263;208;433;166;263;208;
 Degradation_rate [%];1.9;0.16;0.2;1;0.67;0.13;0.16;0.6;0.12;0.13;0.13;0.5;
@@ -46,7 +46,7 @@ Chiller [kW];1.05;1;1;1;1.05;1;1;1;1.05;1;1;1;
 Rectifier [kWstack];35;59;56;52;35;59;56;52;35;59;56;52;
 Separator [m3];0.16;0.26;0.14;0.13;0.16;0.26;0.14;0.13;0.16;0.26;0.14;0.13;
 Pump [kW];1;1;1;1;1;1;1;1;1;1;1;1;
-Piping [unit];110;110;110;110;110;110;110;110;110;110;110;110;
+Piping [kg];110;110;110;110;110;110;110;110;110;110;110;110;
 Instrumentation [kW];1;1;1;1;1;1;1;1;1;1;1;1;
 tank [unit];0;0;0;0;0;0;0;0;0;0;0;0;
 container [m3];1.155;7.847;3.696;3.432;1.155;7.847;3.696;3.432;1.155;7.847;3.696;3.432;
