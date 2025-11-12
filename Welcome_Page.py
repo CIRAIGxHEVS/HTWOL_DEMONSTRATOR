@@ -16,7 +16,8 @@ st.title("Welcome on the HTWOL - the parametrized tool for LCA of Water Electrol
 
 st.write("This app is the Demonstration Version of the tool. It aims to be used for accompanying the partners in understanding the carbon footprint of their technology and evaluate by themselves potential innovation for improving the durability of their technology.")
 
-st.write('Link to Zenodo and Git repository will soon be available.')
+st.write('Please visit the git repository (https://github.com/CIRAIGxHEVS/HTWOL_DEMONSTRATOR) and the supplementary information (10.5281/zenodo.17428316) to obtain more details on methodology and datasets used.")
+st.write("**When using the tool, please cite: Magnaval, G., Mouhoub, M., Boulay, A.-M., & Margni, M. (2025). HTWOL / Harmonizing the assessment of (Green) Hydrogen Supply Chain: a modular and parametrized Life Cycle Assessment Framework. (v0.1) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.17428317**")')
 
 st.write("Warning: If you want to have access to the complete version of the HTWOL (you would need an ecoinvent license), or in case of problem, please contact gabriel.magnaval@hevs.ch. Any feedback is valuable to help us in further developing the app.")
 
