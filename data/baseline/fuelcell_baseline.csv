@@ -1,5 +1,5 @@
 ﻿Family;SOFC;PEMFC;AEMFC;AFC;PEMFC_auto;SOFC;PEMFC;AEMFC;AFC;PEMFC_auto;SOFC;PEMFC;AEMFC;AFC;PEMFC_auto;-- Select --
-Baseline;Operational (TRL>7);Operational (TRL>7);Operational (TRL>7);Operational (TRL>7);Operational (TRL>7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);Target 2050;Target 2050;Target 2050;Target 2050;Target 2050;
+Baseline;Current Performance 2025;Current Performance 2025;Current Performance 2025;Current Performance 2025;Current Performance 2025;Target 2030;Target 2030;Target 2030;Target 2030;Target 2030;Target 2050;Target 2050;Target 2050;Target 2050;Target 2050;
 Active_Surface [m2];0.01;0.02;0.044;0.02;0.015;0.04;0.03;0.044;0.0465;0.023;0.1;0.04;0.044;0.07;0.2;
 cell_per_stack [unit];433;532;646;36;381;433;532;646;36;381;433;532;646;36;381;
 Degradation_rate [%];1.74;1.6;2.2;3.1;4.2;0.7;0.32;1;0.87;4;0.2;0.4;1;0.37;3.5;
@@ -34,7 +34,7 @@ Frame_mat;Stainless Steel;Stainless Steel;Stainless Steel;Stainless Steel;Stainl
 Current Collector [kg/m2];0.26;0.26;0.25;0.25;0.26;0.26;0.16;0.25;0.25;0.16;0.26;0.06;0.25;0.25;0.06;
 Collector_mat;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;
 Sealant [kg/m2];0.8;1;0.3;10;1;0.5;0.5;0.3;5;0.5;0.2;0.1;0.3;1;0.1;
-Sealant_mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;
+Sealant_mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;
 thickness_ep [um];50000;100000;53000;10000;10000;12000;50000;25000;5000;5000;12000;12000;10000;2000;1000;
 ratioS_ep;1.7;1.7;2.5;1;1.1;3.5;1.3;1.5;1;1.1;2.6;1.1;1;1;1.1;
 material_ep;Stainless Steel;Aluminium;Aluminium;Stainless Steel;Aluminium;Stainless Steel;Aluminium;Aluminium;Stainless Steel;Aluminium;Stainless Steel;Aluminium;Aluminium;Stainless Steel;Aluminium;

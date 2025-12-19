@@ -3,8 +3,11 @@
 
 # In[ ]:
 
+import utils.session_variables as sv
+sv.init_session()
 import streamlit as st
-import H2_preset as pst
+import utils.H2_preset as pst
+
 
 model_selected=['-- Select --', 'Baseline','Personalized']
 TRL_selected=['-- Select --','Present','State-of-the-Art','Target 2050']

@@ -3,12 +3,15 @@
 
 # In[ ]:
 
+import utils.session_variables as sv
+sv.init_session()
 import streamlit as st
-import H2_preset as pst
-import H2_export as ext
+import utils.H2_preset as pst
+import utils.H2_export as ext
+
 
 model_selected=['-- Select --', 'Baseline','Personalized']
-TRL_selected=['-- Select --','Operational (TRL>7)','State-of-the-Art (TRL<7)','Target 2050']
+TRL_selected=['-- Select --','Current Performance 2025','Target 2030','Target 2050']
 
 def restart():
     st.session_state['Electrolyser_Perso'] = None

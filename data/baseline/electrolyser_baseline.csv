@@ -1,5 +1,5 @@
 ﻿Family;SOEL;AEL;PEMEL;AEMEL;SOEL;AEL;PEMEL;AEMEL;SOEL;AEL;PEMEL;AEMEL;-- Select --
-TRL;Operational (TRL>7);Operational (TRL>7);Operational (TRL>7);Operational (TRL>7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);Target 2050;Target 2050;Target 2050;Target 2050;
+TRL;Current Performance 2025;Current Performance 2025;Current Performance 2025;Current Performance 2025;Target 2030;Target 2030;Target 2030;Target 2030;Target 2050;Target 2050;Target 2050;Target 2050;
 Active_Surface [m2];0.01;1;0.07;0.01;0.04;2;0.3;0.03;0.1;4.2;0.9;0.09;
 cell_per_stack [unit];433;166;263;208;433;166;263;208;433;166;263;208;
 Degradation_rate [%];1.9;0.16;0.2;1;0.67;0.13;0.16;0.6;0.12;0.13;0.13;0.5;
@@ -34,7 +34,7 @@ Frame_mat;Stainless Steel;Stainless Steel;Stainless Steel;Stainless Steel;Stainl
 Current Collector [kg/m2];0.26;0.25;0.9;0.26;0.26;0.25;0.3;0.26;0.26;0.25;0.1;0.26;
 Collector_mat;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;Copper;
 Sealant [kg/m2];0.8;10;0.06;0.036;0.5;5;0.04;0.036;0.2;1;0.02;0.036;
-Sealant_mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;glass mat;
+Sealant_mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;Glass Wool Mat;
 thickness_ep [um];50000;31000;100000;30000;12000;25000;60000;27500;12000;2300;10000;25000;
 ratioS_ep;1.7;1.9;1.5;4;3.5;1.9;1.25;3;2.6;1.9;1;2.5;
 material_ep;Stainless Steel;Stainless Steel;Aluminium;Aluminium;Stainless Steel;Stainless Steel;Aluminium;Aluminium;Stainless Steel;Stainless Steel;Aluminium;Aluminium;
@@ -54,7 +54,7 @@ U [V];1.315252525;2.3;2.25;2.22;1.2875;1.78;1.81;1.8;1.28;1.7;1.65;1.7;
 J_dens [A/m2];3400;2500;12220;2500;8685;6900;22900;14400;20000;20000;40000;17500;
 fuel utilization [-];1;1;1;1;1;1;1;1;1;1;1;1;
 heat demand [kWh/kgH2];10;0;0;0;8.375;0;0;0;7;0;0;0;
-water demand [L/kgH2];12.5;300;13;13;12.5;300;13;13;12.5;300;13;13;
+water demand [L/kgH2];12.5;15;13;13;12.5;15;13;13;12.5;15;13;13;
 KOH [kg/kgH2];0;0.002;0;0;0;0.002;0;0;0;0.001;0;0;
 heat produced [kWh/kgH2];0;0;0;0;0;0;0;0;0;0;0;0;
 h2 Leakage [-];0.0123;0.0123;0.0123;0.0123;0.0025;0.0025;0.0025;0.0025;0.0015;0.0015;0.0015;0.0015;

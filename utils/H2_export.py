@@ -1,7 +1,7 @@
 import pandas as pd
 import io
 import streamlit as st
-import H2_preset as pst
+import utils.H2_preset as pst
 import ast
 
 legend = [
@@ -13,27 +13,27 @@ legend = [
     "Thickness Hydrogen Electrode [um]",
     "Ratio Surface Hydrogen Electrode (Surface Element / Active Area)",
     "Material Hydrogen Electrode",
-    "Additif Hydrogen Electrode",
+    "Additif Hydrogen Electrode (Load [mg/cm2] - Material)",
     "Thickness Oxygen Electrode [um]",
     "Ratio Surface Oxygen Electrode (Surface Element / Active Area)",
     "Material Oxygen Electrode",
-    "Additive Oxygen Electrode",
+    "Additive Oxygen Electrode (Load [mg/cm2] - Material)",
     "Thickness Barrier Layer [um]",
     "Ratio Surface Barrier Layer (Surface Element / Active Area)",
     "Material Barrier Layer",
-    "Additive Barrier Layer",  
+    "Additive Barrier Layer (Load [mg/cm2] - Material)",  
     "Thickness Contact Layer [um]",
     "Ratio Surface Contact Layer (Surface Element / Active Area)",
     "Material Contact Layer",
-    "Additive Contact Layer", 
+    "Additive Contact Layer (Load [mg/cm2] - Material)", 
     "Thickness Electrolyte [um]",
     "Ratio Surface Electrolyte (Surface Element / Active Area)",
     "Material Electrolyte",
-    "Additive Electrolyte",
+    "Additive Electrolyte (Load [mg/cm2] - Material)",
     "Thickness Bipolar Plate [um]",
     "Ratio Surface Bipolar Plate (Surface Element / Active Area)",
     "Material Bipolar Plate",
-    "Additive Bipolar Plate",
+    "Additive Bipolar Plate (Load [mg/cm2] - Material)",
     "Quantity Frame and Screw [kg/m2]",
     "Material Frame",
     "Quantity Current Collector [kg/m2]",
@@ -43,7 +43,7 @@ legend = [
     "Thickness End Plates [um]",
     "Ratio Surface End Plates (Surface Element / Active Area)",
     "Material End Plates",
-    "Coating End Plates",
+    "Coating End Plates (Load [mg/cm2] - Material)",
     "Lifetime BoP",
     "Compressor [kW/(kgH2/h)]",
     "HEX [m2/(kgH2/h)]",

@@ -1,0 +1,11 @@
+Unit Impacts;Burner;FCEV;Ship
+FU [kwh/FU];3.10E-01;0.22;2.84E-02
+H2 Leakage;5.00E-03;0;0.016
+Elec. Consumed [kWh/FU];0;0;11
+CO2;5.72E-04;0.1;0.002
+EQ;0;0;0
+NRJ;0;0;0
+HH;0;0;0
+Water;0;0;0
+TEQ;0;0;0
+THH;0;0;0

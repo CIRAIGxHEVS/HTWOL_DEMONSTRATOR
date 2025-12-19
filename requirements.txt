@@ -5,3 +5,6 @@ pandas
 pillow 
 astor==0.8.1
 plotly
+requests
+ecoinvent_interface
+xlsxwriter

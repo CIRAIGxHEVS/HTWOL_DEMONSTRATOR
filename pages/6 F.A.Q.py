@@ -6,11 +6,11 @@ st.subheader("Frequently Asked Question")
 
 with st.expander("What is included in the calculations?"):
     st.write("The supply chain of water electrolysis is represented in the figure 1 below. It can include Electricity Generation, Hydrogen Production (Electrolyser), Post Processing for reaching H2 requirements, Storage&Distribution and Hydrogen Reconversion (Fuel Cell). The system boundaries depend on the functional unit selected.")
-    image = Image.open("SB.png") 
+    image = Image.open("images/SB.png") 
     st.image(image, caption="Figure 1: Scope of the LCA of water electrolysis. The processes of the supply chain and the functional unit selected depends on the final application of the H2.")
     st.write("More specifically, for electrolysers and fuel cells, the model integrates the whole life of the technology from raw material extraction to the end-of life, including manufacturing of the stack, manufacturing of the equipment, or use phase. These processes are represented in Figure 2")
-    image = Image.open("Tier1.png") 
-    st.image(image, caption="Figure 2: Process Tree reduced to the main life cycle stages of the FC&EL technologies. The same color are used in the contribution analyses to help you identify the contribution of each life cycle stage depending on the configurations modeled.")
+    image = Image.open("images/modular_structure.png") 
+    st.image(image, caption="Figure 2: Process Tree of the FC&EL technologie (modular structure). The same color are used in the contribution analyses to help you identify the contribution of each life cycle stage depending on the configurations modeled.")
 
 
 with st.expander("How to use this tool?"):
