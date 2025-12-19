@@ -1,12 +1,12 @@
-Unit Impacts;None;pipeline (250km);pipeline (2500km);None;pipeline (250km);pipeline (2500km);None;pipeline (250km);pipeline (2500km);-- Select --
-Baseline;Operational (TRL>7);Operational (TRL>7);Operational (TRL>7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);State-of-the-Art (TRL<7);Target 2050;Target 2050;Target 2050;
-pressure;1;100;100;1;100;100;1;100;100;
-H2_leakage;0;0.0082;0.0082;0;0.0058;0.0058;0;0.0015;0.0015;
-electricity consumed;0;1.8;18;0;1.8;18;0;1.8;18;
-CO2;0;0.02;0.2;0;0.02;0.2;0;0.02;0.2;
-EQ;0;0;0;0;0;0;0;0;0;
-NRJ;0;0;0;0;0;0;0;0;0;
-HH;0;0;0;0;0;0;0;0;0;
-Water;0;0;0;0;0;0;0;0;0;
-TEQ;0;0;0;0;0;0;0;0;0;
-THH;0;0;0;0;0;0;0;0;0;
+Unit Impacts;None;pipeline (250km);Truck (250km - Fuel);pipeline (2500km);Ship (2500km - HFO);None;pipeline (250km);Truck (250km - Fuel);pipeline (2500km);Ship (2500km - HFO);None;pipeline (250km);Truck (250km - Fuel);pipeline (2500km);Ship (2500km - HFO);-- Select --
+Baseline;Current Performance 2025;Current Performance 2025;Current Performance 2025;Current Performance 2025;Current Performance 2025;Target 2030;Target 2030;Target 2030;Target 2030;Target 2030;Target 2050;Target 2050;Target 2050;Target 2050;Target 2050;
+pressure;1;100;500;100;500;1;100;500;100;500;1;100;500;100;500;
+H2_leakage;0;0.0082;0.0038;0.0082;0.0153;0;0.0058;0.0022;0.0058;0.0086;0;0.0015;0.0007;0.0015;0.0029;
+electricity consumed;0;1.8;0;18;0;0;1.8;0;18;0;0;1.8;0;18;0;
+CO2;0;0.02;8.50E-01;0.2;2.10E+00;0;0.02;8.50E-01;0.2;2.10E+00;0;0.02;8.50E-01;0.2;2.10E+00;
+EQ;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+NRJ;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+HH;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+Water;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+TEQ;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+THH;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
