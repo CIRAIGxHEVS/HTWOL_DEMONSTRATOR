@@ -1,4 +1,8 @@
 techno;Steam Methane Reforming;-- Select --
+Pressure;25;
+Temperature;300;
+Purity;99.97;
+lifetime_equipment [h];100000;
 CO2;10.8;
 EQ;0;
 NRJ;0;
