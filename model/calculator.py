@@ -44,7 +44,7 @@ N_cat=len(RER_imp)
 
 def electricity_impact(elec_mix):
     RER,QC,wind,PV,hydro,nuclear=elec_mix
-    return RER*RER_imp+QC*QC_impt+wind*wind_imp+PV*PV_imp+hydro*hydro_imp+nuclear*nuclear_imp
+    return RER*RER_imp+QC*QC_imp+wind*wind_imp+PV*PV_imp+hydro*hydro_imp+nuclear*nuclear_imp
 
 
 # In[158]:
