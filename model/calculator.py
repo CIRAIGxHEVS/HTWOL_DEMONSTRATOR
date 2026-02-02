@@ -25,6 +25,7 @@ distrib_dict=st.session_state.dictionary[5]
 
 
 RER_imp=np.array(cons_dict['RER'])
+QC_imp=np.array(cons_dict['QC'])
 wind_imp=np.array(cons_dict['Wind'])
 PV_imp=np.array(cons_dict['PV'])
 hydro_imp=np.array(cons_dict['Hydro'])
@@ -42,8 +43,8 @@ N_cat=len(RER_imp)
 
 
 def electricity_impact(elec_mix):
-    RER,wind,PV,hydro,nuclear=elec_mix
-    return RER*RER_imp+wind*wind_imp+PV*PV_imp+hydro*hydro_imp+nuclear*nuclear_imp
+    RER,QC,wind,PV,hydro,nuclear=elec_mix
+    return RER*RER_imp+QC*QC_impt+wind*wind_imp+PV*PV_imp+hydro*hydro_imp+nuclear*nuclear_imp
 
 
 # In[158]:
