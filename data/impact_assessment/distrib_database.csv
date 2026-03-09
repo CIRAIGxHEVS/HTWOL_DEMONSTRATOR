@@ -2,7 +2,7 @@ Unit Impacts;None;pipeline (250km);Truck (250km - Fuel);pipeline (2500km);Ship (
 Baseline;Current Performance 2025;Current Performance 2025;Current Performance 2025;Current Performance 2025;Current Performance 2025;Target 2030;Target 2030;Target 2030;Target 2030;Target 2030;Target 2050;Target 2050;Target 2050;Target 2050;Target 2050;
 pressure;1;100;500;100;500;1;100;500;100;500;1;100;500;100;500;
 H2_leakage;0;0.0082;0.0038;0.0082;0.0153;0;0.0058;0.0022;0.0058;0.0086;0;0.0015;0.0007;0.0015;0.0029;
-electricity consumed;0;1.8;0;18;0;0;1.8;0;18;0;0;1.8;0;18;0;
+electricity consumed;0;1.8;0;7.5;0;0;0.8;0;3.4;0;0;0.6;0;3.3;0;
 CO2;0;0.02;8.50E-01;0.2;2.10E+00;0;0.02;8.50E-01;0.2;2.10E+00;0;0.02;8.50E-01;0.2;2.10E+00;
 EQ;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
 NRJ;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
