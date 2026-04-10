@@ -8,6 +8,7 @@ sv.init_session()
 import streamlit as st
 import utils.H2_preset as pst
 import utils.H2_export as ext
+import parameters.session_states as ss
 
 
 model_selected=['-- Select --', 'Baseline','Personalized']
@@ -27,7 +28,7 @@ with col3:
         if uploaded_file:
             if st.button(f"Confirm Uploading"):
                 ext.import_dict(uploaded_file,False)
-                pst.key_dictionary()
+                ss.key_dictionary()
             
 
 
@@ -51,8 +52,8 @@ if 'Electrolyser_Perso' not in st.session_state or st.session_state['Electrolyse
     st.session_state['Electrolyser_Perso'] = None
     st.session_state['Baseline_Perso'] = None
     if "dictionary" not in st.session_state:
-        pst.dictionary()
-        pst.key_dictionary()
+        ss.dictionary()
+        ss.key_dictionary()
     electrolyser = '-- Select --'
     electrolyser_name = '-- Select --'
     TRL = '-- Select --'
@@ -110,7 +111,7 @@ else:
                 if scenario_name:
                     st.session_state['Name_Scenario'] = scenario_name
                     st.session_state.dictionary[2][st.session_state['Name_Scenario']] = pst.sublist_to_ref(*st.session_state['Electrolyser_Perso'])
-                    pst.key_dictionary()
+                    ss.key_dictionary()
                     st.success(f"Scenario '{st.session_state['Name_Scenario']}' has been created and saved")
                     restart()
                 else:

@@ -598,7 +598,7 @@ def plotting(result, tier, LCIA):
     df.loc['Total'] = df.drop(columns=["Inventory"]).sum()
     df.loc['Total', 'Inventory'] = ""
 
-    df = df.applymap(fmt)
+    df = df.map(fmt)
 
     st.dataframe(df, use_container_width=True)
 
@@ -784,7 +784,7 @@ def plotting_comp(results, tier, LCIA, scenario_name):
         df = df[(df.drop(columns=["Inventory"]).abs() > 1e-10).any(axis=1)]
         df.loc['Total'] = df.drop(columns=["Inventory"]).sum()
         df.loc['Total', 'Inventory'] = ""
-        df = df.applymap(fmt)
+        df = df.map(fmt)
         dfs.append(df)
 
     cols = st.columns(n_scen)
@@ -866,7 +866,7 @@ def plotting_technosphere(baseline, technosphere, LCIA, labels):
     fmt = lambda x: f"{x:.3g}" if isinstance(x,(int,float,np.floating)) else x
     df = pd.DataFrame(arr, index=labels, columns=legend_LCIA)
     df = df[(df.abs()>1e-10).any(axis=1)]
-    df = df.applymap(fmt)
+    df = df.map(fmt)
 
     st.dataframe(df,use_container_width=True)
 
@@ -928,7 +928,7 @@ def plotting_stack(result, LCIA, labels):
     fmt = lambda x: f"{x:.3g}" if isinstance(x,(int,float,np.floating)) else x
     df = pd.DataFrame(arr, index=labels, columns=legend_LCIA)
     df = df[(df.abs()>1e-10).any(axis=1)]
-    df = df.applymap(fmt)
+    df = df.map(fmt)
     st.table(df)
 
 
